@@ -13,10 +13,13 @@
         <label for="time">Tiempo de juego (segundos):</label>
         <input type="number" id="time" min="1" max="600" value="60">
         <button id="start-button">Iniciar</button>
+        <button id="pause-button">Pausar</button>
+        <button id="resume-button" disabled>Reanudar</button>
     </div>
     <div id="scoreboard">
         <p>Jugador 1 (Rojo) celdas pintadas: <span id="score1">0</span></p>
         <p>Jugador 2 (Azul) celdas pintadas: <span id="score2">0</span></p>
+        <p>Tiempo restante: <span id="timer">60</span> segundos</p>
     </div>
     <script src="script.js"></script>
 </body>

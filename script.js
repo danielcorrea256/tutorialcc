@@ -5,10 +5,23 @@ let player1Score = 0;
 let player2Score = 0;
 let gameInterval;
 let gameTime;
+let endTime;
+let isPaused = false;
+let isGameStarted = false;
 
 const grid = document.getElementById('game-container');
+
 const score1Elem = document.getElementById('score1');
+
 const score2Elem = document.getElementById('score2');
+
+const timerElem = document.getElementById('timer');
+
+const pauseButton = document.getElementById('pause-button');
+
+const resumeButton = document.getElementById('resume-button');
+
+const startButton = document.getElementById('start-button');
 
 function createGrid() {
     for (let i = 0; i < gridSize * gridSize; i++) {
@@ -16,6 +29,50 @@ function createGrid() {
         cell.classList.add('cell');
         grid.appendChild(cell);
     }
+}
+
+function clearGrid() {
+
+    const cells = grid.querySelectorAll('.cell');
+
+    cells.forEach(cell => {
+
+        cell.classList.remove('red', 'blue');
+
+    });
+
+}
+
+function resetGame() {
+
+    clearGrid();
+
+    player1Position = { x: 0, y: 0 };
+
+    player2Position = { x: 9, y: 9 };
+
+    player1Score = 0;
+
+    player2Score = 0;
+
+    score1Elem.textContent = player1Score;
+
+    score2Elem.textContent = player2Score;
+
+    timerElem.textContent = '0';
+
+    clearInterval(gameInterval);
+
+    isPaused = false;
+
+    isGameStarted = false;
+
+    startButton.textContent = 'Iniciar'; // Cambia el texto del botón a 'Iniciar'
+
+    pauseButton.disabled = true;
+
+    resumeButton.disabled = true;
+
 }
 
 function updateCell(x, y, color) {
@@ -101,6 +158,7 @@ function getWinnerMessage() {
 }
 
 function startGame() {
+    isGameStarted = true;
     clearInterval(gameInterval);
     gameTime = parseInt(document.getElementById('time').value) * 1000;
     const endTime = Date.now() + gameTime;
@@ -109,12 +167,28 @@ function startGame() {
     updateCell(player2Position.x, player2Position.y, 'blue');
 
     gameInterval = setInterval(() => {
-        const timeLeft = endTime - Date.now();
-        if (timeLeft <= 0) {
-            clearInterval(gameInterval);
-            alert(getWinnerMessage());
+        if (!isPaused) {
+            const timeLeft = endTime - Date.now();
+            if (timeLeft <= 0) {
+                clearInterval(gameInterval);
+                timerElem.textContent = '0';
+                alert('¡El tiempo ha terminado!');
+                pauseButton.disabled = true;
+                resumeButton.disabled = true;
+                startButton.textContent = 'Iniciar'; // Cambia el texto del botón a 'Iniciar'
+                isGameStarted = false;
+                alert(getWinnerMessage());
+        }
+        } else {
+            // Reinicia el juego
+            resetGame();
         }
     }, 1000);
+    pauseButton.disabled = false;
+
+    resumeButton.disabled = true;
+
+    startButton.textContent = 'Reiniciar'; // Cambia el texto del botón a 'Reiniciar'
 }
 
 document.addEventListener('keydown', (e) => {

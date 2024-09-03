@@ -1,36 +1,241 @@
 body {
-    font-family: Arial, sans-serif;
+
+    font-family: 'Arial', sans-serif;
+
     text-align: center;
+
+    background-color: #f4f4f4;
+
+    margin: 0;
+
+    padding: 0;
+
 }
+
+
+
+
+h1 {
+
+    color: #333;
+
+    margin-top: 20px;
+
+}
+
+
+
 
 #game-container {
+
     display: grid;
+
     grid-template-columns: repeat(10, 40px);
+
     grid-template-rows: repeat(10, 40px);
+
     gap: 1px;
+
     margin: 20px auto;
+
     width: 420px;
+
+    border: 2px solid #333;
+
+    background-color: #eee;
+
 }
+
+
+
 
 .cell {
+
     width: 40px;
+
     height: 40px;
+
     border: 1px solid #ccc;
+
     box-sizing: border-box;
+
+    transition: background-color 0.2s ease;
+
 }
+
+
+
 
 .cell.red {
+
     background-color: red;
+
 }
+
+
+
 
 .cell.blue {
+
     background-color: blue;
+
 }
+
+
+
 
 #scoreboard {
+
     margin-top: 20px;
+
+    background-color: #fff;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    padding: 10px;
+
+    display: inline-block;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
 }
 
-button {
+
+
+
+#scoreboard p {
+
+    margin: 5px 0;
+
+    font-size: 16px;
+
+}
+
+
+
+
+label {
+
+    font-size: 16px;
+
+}
+
+
+
+
+input[type="number"] {
+
+    padding: 5px;
+
+    font-size: 16px;
+
     margin-left: 10px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 4px;
+
+}
+
+
+
+
+button {
+
+    background-color: #007bff;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 20px;
+
+    font-size: 16px;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    margin-left: 10px;
+
+    transition: background-color 0.3s ease;
+
+}
+
+
+
+
+button:hover {
+
+    background-color: #0056b3;
+
+}
+
+
+
+
+#scoreboard p {
+
+    margin: 5px 0;
+
+    font-size: 16px;
+
+}
+
+
+
+
+#timer {
+
+    font-weight: bold;
+
+    color: #d9534f; /* Color rojo para el temporizador */
+
+}
+
+
+
+
+button {
+
+    background-color: #007bff;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 20px;
+
+    font-size: 16px;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    margin-left: 10px;
+
+    transition: background-color 0.3s ease;
+
+}
+
+
+
+
+button:hover {
+
+    background-color: #0056b3;
+
+}
+
+
+
+
+button:disabled {
+
+    background-color: #ccc;
+
+    cursor: not-allowed;
+
 }
