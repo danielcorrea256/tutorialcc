@@ -23,13 +23,44 @@ function updateCell(x, y, color) {
     const cell = grid.children[index];
     if (cell.classList.contains('cell')) {
         if (color === 'red') {
-            cell.classList.add('red');
-            player1Score++;
-            score1Elem.textContent = player1Score;
+
+            if (cell.classList.contains('red')) {
+
+            }
+            else if (cell.classList.contains('blue')) {
+                player2Score--;
+                player1Score++;
+                cell.classList.remove('blue');
+                cell.classList.add('red');
+                score1Elem.textContent = player1Score;
+                score2Elem.textContent = player2Score;
+            }
+            else {
+                cell.classList.add('red');
+                player1Score++;
+                score1Elem.textContent = player1Score;
+            }
+
         } else if (color === 'blue') {
-            cell.classList.add('blue');
-            player2Score++;
-            score2Elem.textContent = player2Score;
+
+            if (cell.classList.contains('blue')) {
+
+            }
+            else if (cell.classList.contains('red')) {
+                player2Score++;
+                player1Score--;
+
+                cell.classList.remove('red');
+                cell.classList.add('blue');
+
+                score1Elem.textContent = player1Score;
+                score2Elem.textContent = player2Score;
+            }
+            else {
+                cell.classList.add('blue');
+                player2Score++;
+                score2Elem.textContent = player2Score;
+            }
         }
     }
 }
