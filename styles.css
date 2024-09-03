@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#game-container {
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+    grid-template-rows: repeat(10, 40px);
+    gap: 1px;
+    margin: 20px auto;
+    width: 420px;
+}
+
+.cell {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.cell.red {
+    background-color: red;
+}
+
+.cell.blue {
+    background-color: blue;
+}
+
+#scoreboard {
+    margin-top: 20px;
+}
+
+button {
+    margin-left: 10px;
+}
