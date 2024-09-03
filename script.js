@@ -71,6 +71,11 @@ function movePlayer1(direction) {
         case 'S': if (player1Position.y < gridSize - 1) player1Position.y++; break;
         case 'A': if (player1Position.x > 0) player1Position.x--; break;
         case 'D': if (player1Position.x < gridSize - 1) player1Position.x++; break;
+
+        case 'w': if (player1Position.y > 0) player1Position.y--; break;
+        case 's': if (player1Position.y < gridSize - 1) player1Position.y++; break;
+        case 'a': if (player1Position.x > 0) player1Position.x--; break;
+        case 'd': if (player1Position.x < gridSize - 1) player1Position.x++; break;
     }
     updateCell(player1Position.x, player1Position.y, 'red');
 }
@@ -95,6 +100,7 @@ function startGame() {
         if (timeLeft <= 0) {
             clearInterval(gameInterval);
             alert('¡El tiempo ha terminado!');
+            
         }
     }, 1000);
 }
