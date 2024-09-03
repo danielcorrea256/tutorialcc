@@ -90,23 +90,35 @@ function movePlayer2(direction) {
     updateCell(player2Position.x, player2Position.y, 'blue');
 }
 
+function getWinnerMessage() {
+    if (player1Score > player2Score) {
+        return '¡Jugador 1 gana con ' + player1Score + ' celdas pintadas!';
+    } else if (player2Score > player1Score) {
+        return '¡Jugador 2 gana con ' + player2Score + ' celdas pintadas!';
+    } else {
+        return '¡Es un empate!';
+    }
+}
+
 function startGame() {
     clearInterval(gameInterval);
     gameTime = parseInt(document.getElementById('time').value) * 1000;
     const endTime = Date.now() + gameTime;
 
+    updateCell(player1Position.x, player1Position.y, 'red');
+    updateCell(player2Position.x, player2Position.y, 'blue');
+
     gameInterval = setInterval(() => {
         const timeLeft = endTime - Date.now();
         if (timeLeft <= 0) {
             clearInterval(gameInterval);
-            alert('¡El tiempo ha terminado!');
-            
+            alert(getWinnerMessage());
         }
     }, 1000);
 }
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'W' || e.key === 'S' || e.key === 'A' || e.key === 'D') {
+    if (e.key === 'W' || e.key === 'S' || e.key === 'A' || e.key === 'D' || e.key === 'w' || e.key === 's' || e.key === 'a' || e.key === 'd') {
         movePlayer1(e.key);
     } else if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
         movePlayer2(e.key);
