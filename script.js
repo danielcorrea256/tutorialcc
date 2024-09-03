@@ -167,22 +167,35 @@ function startGame() {
     updateCell(player2Position.x, player2Position.y, 'blue');
 
     gameInterval = setInterval(() => {
+
         if (!isPaused) {
+
             const timeLeft = endTime - Date.now();
+
             if (timeLeft <= 0) {
+
                 clearInterval(gameInterval);
+
                 timerElem.textContent = '0';
+
                 alert('¡El tiempo ha terminado!');
+
                 pauseButton.disabled = true;
+
                 resumeButton.disabled = true;
+
                 startButton.textContent = 'Iniciar'; // Cambia el texto del botón a 'Iniciar'
+
                 isGameStarted = false;
-                alert(getWinnerMessage());
+
+            } else {
+
+                timerElem.textContent = Math.ceil(timeLeft / 1000);
+
+            }
+
         }
-        } else {
-            // Reinicia el juego
-            resetGame();
-        }
+
     }, 1000);
     pauseButton.disabled = false;
 
